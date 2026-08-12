@@ -41,6 +41,14 @@
         <activity
             android:name=".activites.DetailsProgrammeActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".activites.NutritionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activites.ProfilActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

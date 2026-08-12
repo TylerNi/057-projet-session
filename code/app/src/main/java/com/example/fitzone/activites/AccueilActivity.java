@@ -27,6 +27,7 @@ import com.example.fitzone.reseau.ApiCallback;
 import com.example.fitzone.reseau.ApiClient;
 import com.example.fitzone.utils.SessionManager;
 import com.example.fitzone.utils.StatutSeance;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -84,6 +85,20 @@ public class AccueilActivity extends AppCompatActivity {
                 startActivity(new Intent(this, ListeProgrammesActivity.class)));
 
         boutonDeconnexion.setOnClickListener(v -> deconnecter());
+
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navAccueil);
+        navigation.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.navProgrammes) {
+                startActivity(new Intent(this, ListeProgrammesActivity.class));
+            } else if (id == R.id.navNutrition) {
+                startActivity(new Intent(this, NutritionActivity.class));
+            } else if (id == R.id.navProfil) {
+                startActivity(new Intent(this, ProfilActivity.class));
+            }
+            return true;
+        });
 
         UtilisateurDao utilisateurDao = new UtilisateurDao(this);
         User cache = utilisateurDao.obtenir(session.obtenirUserId());
@@ -199,7 +214,7 @@ public class AccueilActivity extends AppCompatActivity {
 
     private void afficherSeances(List<Seance> seances, int nombreProgrammes) {
         Map<String, String> statutsLocaux = etatSeanceDao.obtenirStatuts(session.obtenirUserId());
-        Map<Seance, String> statuts = new HashMap<>();
+        Map<String, String> statuts = new HashMap<>();
         int aFaire = 0;
         int enRetard = 0;
         int soumises = 0;
@@ -207,7 +222,7 @@ public class AccueilActivity extends AppCompatActivity {
 
         for (Seance seance : seances) {
             String statut = StatutSeance.calculer(seance, statutsLocaux.get(seance.getId()));
-            statuts.put(seance, statut);
+            statuts.put(seance.getId(), statut);
 
             if (StatutSeance.VALIDEE.equals(statut)) {
                 validees++;
@@ -224,7 +239,7 @@ public class AccueilActivity extends AppCompatActivity {
 
         List<Seance> aVenir = new ArrayList<>();
         for (Seance seance : seances) {
-            String statut = statuts.get(seance);
+            String statut = statuts.get(seance.getId());
             if (StatutSeance.A_FAIRE.equals(statut) || StatutSeance.EN_RETARD.equals(statut)) {
                 aVenir.add(seance);
             }

@@ -3,19 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/details_a_faire"
+        android:text="@string/stub_partie_b"
         android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/texteProgrammeId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
 
 </LinearLayout>

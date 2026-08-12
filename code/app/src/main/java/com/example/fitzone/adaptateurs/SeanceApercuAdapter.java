@@ -17,9 +17,9 @@ import java.util.Map;
 public class SeanceApercuAdapter extends RecyclerView.Adapter<SeanceApercuAdapter.SeanceViewHolder> {
 
     private List<Seance> seances;
-    private Map<Seance, String> statuts;
+    private Map<String, String> statuts;
 
-    public SeanceApercuAdapter(List<Seance> seances, Map<Seance, String> statuts) {
+    public SeanceApercuAdapter(List<Seance> seances, Map<String, String> statuts) {
         this.seances = seances;
         this.statuts = statuts;
     }
@@ -38,7 +38,7 @@ public class SeanceApercuAdapter extends RecyclerView.Adapter<SeanceApercuAdapte
         holder.texteTitreSeance.setText(seance.getTitle());
         holder.texteEcheance.setText(holder.itemView.getContext()
                 .getString(R.string.accueil_echeance, seance.getDueDate()));
-        holder.texteStatutSeance.setText(statuts.get(seance));
+        holder.texteStatutSeance.setText(statuts.get(seance.getId()));
     }
 
     @Override

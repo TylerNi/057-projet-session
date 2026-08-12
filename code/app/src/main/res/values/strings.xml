@@ -40,7 +40,13 @@
     <string name="programmes_aucun">Aucun programme ne correspond</string>
     <string name="programme_coach">Coach : %1$s</string>
 
+    <string name="nav_accueil">Accueil</string>
+    <string name="nav_programmes">Programmes</string>
+    <string name="nav_nutrition">Nutrition</string>
+    <string name="nav_profil">Profil</string>
+
     <string name="details_a_faire">Écran à réaliser (partie B) — programme reçu :</string>
+    <string name="stub_partie_b">Écran à réaliser (partie B)</string>
 
     <string name="erreur_chargement">Erreur lors du chargement des données</string>
 </resources>

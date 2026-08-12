@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navAccueil"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="@string/nav_accueil" />
+
+    <item
+        android:id="@+id/navProgrammes"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="@string/nav_programmes" />
+
+    <item
+        android:id="@+id/navNutrition"
+        android:icon="@android:drawable/ic_menu_view"
+        android:title="@string/nav_nutrition" />
+
+    <item
+        android:id="@+id/navProfil"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="@string/nav_profil" />
+
+</menu>

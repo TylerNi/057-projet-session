@@ -129,7 +129,9 @@ Depuis la racine du repo :
 ```
 npx json-server fitzone.json --port 3000 --host 0.0.0.0
 ```
-L'app y accède via `http://10.0.2.2:3000` (émulateur). **Le rechargement à chaud ne fonctionne pas** : après une modification manuelle de `fitzone.json`, redémarrer le serveur.
+L'app y accède via `http://10.0.2.2:3000` (émulateur).
+
+⚠️ **Toujours arrêter le serveur avant d'éditer `fitzone.json` à la main, puis le relancer.** json-server garde tout le fichier en mémoire : le rechargement à chaud ne fonctionne pas (il continue de servir l'ancienne version), et surtout il réécrit le fichier entier à chaque POST/PUT/DELETE. Une édition manuelle faite pendant qu'il tourne est donc écrasée silencieusement à la première écriture de l'app — sans aucune erreur. C'est le piège principal pour B5 (ajout de la collection `nutrition`).
 
 ### Source de vérité des données
 
@@ -150,6 +152,7 @@ ApiClient.put(String path, JSONObject body, ApiCallback callback);
 `ApiCallback` : `onSuccess(String body)` / `onError(String message)`, tous deux appelés sur le thread principal.
 
 - **Pas de `PATCH`** : `HttpURLConnection` ne le supporte pas sur Android. Pour modifier le profil (B6), envoyer `put("/users/" + id, user.toJson(), …)` avec l'objet **complet** (json-server remplace l'item).
+- ⚠️ **Piège de perte de données en B6.** `UtilisateurDao.obtenir()` ne restitue que 7 champs (id, username, email, nom, prenom, telephone, photoUrl) : le `password` revient `null` et `enrolledProgramIds` / `quizResults` / `completedSeanceIds` reviennent vides. Faire un `put` d'un `User` construit à partir du cache **efface les inscriptions et le mot de passe sur le serveur**, et l'utilisateur ne peut plus se connecter. Marche à suivre obligatoire pour B6 : `get("/users/" + id)` → modifier les champs sur l'objet frais → `put`. Le cache SQLite sert uniquement à l'affichage hors ligne.
 - `onError` = serveur injoignable ou code HTTP ≥ 400. Une requête qui ne trouve rien renvoie HTTP 200 avec `[]` → ce n'est **pas** une erreur, c'est un cas métier à traiter dans `onSuccess`.
 
 ### `dao`
@@ -188,6 +191,8 @@ Intent intent = new Intent(this, DetailsProgrammeActivity.class);
 intent.putExtra(DetailsProgrammeActivity.EXTRA_PROGRAMME_ID, programme.getId());
 ```
 `DetailsProgrammeActivity` existe en **stub** (affiche l'id reçu) : B1 remplit son contenu, garde la constante `EXTRA_PROGRAMME_ID` et le nom de classe. Toute nouvelle activité doit être déclarée dans `AndroidManifest.xml`.
+
+Le tableau de bord porte une `BottomNavigationView` (`menu/menu_navigation.xml`) avec 4 entrées : Accueil, Programmes, Nutrition, Profil. `NutritionActivity` (B5) et `ProfilActivity` (B6) existent en **stubs vides** déjà branchés et déclarés au manifeste — B remplit leur contenu sans toucher à la navigation. Les icônes sont des `@android:drawable` provisoires, à remplacer selon la maquette Figma.
 
 ### Adaptateurs réutilisables
 - `ProgrammeAdapter(List<Program>, SurClicProgramme)` — item : code, titre, coach, session.
