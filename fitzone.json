@@ -9,7 +9,14 @@
       "prenom": "Karim",
       "telephone": "514-222-3344",
       "photoUrl": "https://example.com/photo1.jpg",
-      "enrolledProgramIds": ["1", "2", "3", "4", "5", "6"],
+      "enrolledProgramIds": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
       "quizResults": [
         {
           "quizId": "1",
@@ -28,7 +35,9 @@
       "prenom": "Alicia",
       "telephone": "514-555-7788",
       "photoUrl": "",
-      "enrolledProgramIds": ["2"],
+      "enrolledProgramIds": [
+        "2"
+      ],
       "quizResults": [],
       "completedSeanceIds": []
     },
@@ -41,7 +50,11 @@
       "prenom": "Raj",
       "telephone": "514-000-1111",
       "photoUrl": "",
-      "enrolledProgramIds": ["1", "2", "3"],
+      "enrolledProgramIds": [
+        "1",
+        "2",
+        "3"
+      ],
       "quizResults": [],
       "completedSeanceIds": []
     }
@@ -57,7 +70,8 @@
       "imageUrl": "https://example.com/muscu.png",
       "annonces": [
         "La séance d'évaluation initiale aura lieu le 15 mars au studio A."
-      ]
+      ],
+      "statut": "actif"
     },
     {
       "id": "2",
@@ -69,7 +83,8 @@
       "imageUrl": "https://example.com/hiit.png",
       "annonces": [
         "Le nouveau circuit HIIT est disponible dans l'application."
-      ]
+      ],
+      "statut": "actif"
     },
     {
       "id": "3",
@@ -81,7 +96,8 @@
       "imageUrl": "https://example.com/yoga.png",
       "annonces": [
         "Apportez votre tapis pour la séance de mardi."
-      ]
+      ],
+      "statut": "actif"
     },
     {
       "id": "4",
@@ -93,7 +109,8 @@
       "imageUrl": "https://example.com/poids.png",
       "annonces": [
         "Quiz sur les groupes alimentaires vendredi."
-      ]
+      ],
+      "statut": "termine"
     },
     {
       "id": "5",
@@ -105,7 +122,8 @@
       "imageUrl": "https://example.com/perf.png",
       "annonces": [
         "Mise à jour du plan de charge terminée."
-      ]
+      ],
+      "statut": "actif"
     },
     {
       "id": "6",
@@ -117,36 +135,373 @@
       "imageUrl": "https://example.com/domicile.png",
       "annonces": [
         "Séance en direct vendredi soir."
-      ]
+      ],
+      "statut": "termine"
     }
   ],
   "quizzes": [
-    {"id":"1","programId":"1","title":"Quiz 1","questions":[{"id":"1","question":"Quel muscle est principalement sollicité lors d'un squat ?","options":["Quadriceps","Biceps","Trapèze"],"correctOption":0}]},
-    {"id":"2","programId":"1","title":"Quiz 2","questions":[{"id":"5","question":"RM signifie ?","options":["Répétition Maximale","Récupération Musculaire","Rythme Modéré"],"correctOption":0}]},
-    {"id":"3","programId":"2","title":"Quiz 1","questions":[{"id":"9","question":"HIIT signifie ?","options":["High Intensity Interval Training","Heart Increase Interval Test","Home Intense Interval Time"],"correctOption":0}]},
-    {"id":"4","programId":"2","title":"Quiz 2","questions":[{"id":"13","question":"Fréquence cardiaque cible signifie ?","options":["Zone d'entraînement visée","Copie du rythme","Calcul du poids"],"correctOption":0}]},
-    {"id":"5","programId":"3","title":"Quiz 1","questions":[{"id":"17","question":"Le yoga vise entre autres à améliorer ?","options":["La mobilité","La force pure","La vitesse"],"correctOption":0}]},
-    {"id":"6","programId":"3","title":"Quiz 2","questions":[{"id":"21","question":"La respiration diaphragmatique sert à ?","options":["Favoriser la relaxation","Augmenter la vitesse","Réduire la mobilité"],"correctOption":0}]},
-    {"id":"7","programId":"4","title":"Quiz 1","questions":[{"id":"25","question":"Un déficit calorique signifie ?","options":["Consommer moins de calories qu'on en dépense","Manger plus de protéines","Faire plus de cardio"],"correctOption":0}]},
-    {"id":"8","programId":"4","title":"Quiz 2","questions":[{"id":"29","question":"Quel macronutriment est le plus calorique par gramme ?","options":["Lipides","Glucides","Protéines"],"correctOption":0}]},
-    {"id":"9","programId":"5","title":"Quiz 1","questions":[{"id":"33","question":"La pliométrie sert à développer ?","options":["La puissance","L'endurance","La souplesse"],"correctOption":0}]},
-    {"id":"10","programId":"5","title":"Quiz 2","questions":[{"id":"37","question":"Un bon échauffement permet de ?","options":["Réduire le risque de blessure","Augmenter la fatigue","Diminuer la fréquence cardiaque"],"correctOption":0}]},
-    {"id":"11","programId":"6","title":"Quiz 1","questions":[{"id":"41","question":"Les pompes sollicitent principalement ?","options":["Les pectoraux","Les mollets","Les ischio-jambiers"],"correctOption":0}]},
-    {"id":"12","programId":"6","title":"Quiz 2","questions":[{"id":"45","question":"Un entraînement au poids du corps est utile pour ?","options":["S'entraîner sans équipement","Remplacer l'échauffement","Éviter le cardio"],"correctOption":0}]}
+    {
+      "id": "1",
+      "programId": "1",
+      "title": "Quiz 1",
+      "questions": [
+        {
+          "id": "1",
+          "question": "Quel muscle est principalement sollicité lors d'un squat ?",
+          "options": [
+            "Quadriceps",
+            "Biceps",
+            "Trapèze"
+          ],
+          "correctOption": 0
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "programId": "1",
+      "title": "Quiz 2",
+      "questions": [
+        {
+          "id": "5",
+          "question": "RM signifie ?",
+          "options": [
+            "Répétition Maximale",
+            "Récupération Musculaire",
+            "Rythme Modéré"
+          ],
+          "correctOption": 0
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "programId": "2",
+      "title": "Quiz 1",
+      "questions": [
+        {
+          "id": "9",
+          "question": "HIIT signifie ?",
+          "options": [
+            "High Intensity Interval Training",
+            "Heart Increase Interval Test",
+            "Home Intense Interval Time"
+          ],
+          "correctOption": 0
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "programId": "2",
+      "title": "Quiz 2",
+      "questions": [
+        {
+          "id": "13",
+          "question": "Fréquence cardiaque cible signifie ?",
+          "options": [
+            "Zone d'entraînement visée",
+            "Copie du rythme",
+            "Calcul du poids"
+          ],
+          "correctOption": 0
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "programId": "3",
+      "title": "Quiz 1",
+      "questions": [
+        {
+          "id": "17",
+          "question": "Le yoga vise entre autres à améliorer ?",
+          "options": [
+            "La mobilité",
+            "La force pure",
+            "La vitesse"
+          ],
+          "correctOption": 0
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "programId": "3",
+      "title": "Quiz 2",
+      "questions": [
+        {
+          "id": "21",
+          "question": "La respiration diaphragmatique sert à ?",
+          "options": [
+            "Favoriser la relaxation",
+            "Augmenter la vitesse",
+            "Réduire la mobilité"
+          ],
+          "correctOption": 0
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "programId": "4",
+      "title": "Quiz 1",
+      "questions": [
+        {
+          "id": "25",
+          "question": "Un déficit calorique signifie ?",
+          "options": [
+            "Consommer moins de calories qu'on en dépense",
+            "Manger plus de protéines",
+            "Faire plus de cardio"
+          ],
+          "correctOption": 0
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "programId": "4",
+      "title": "Quiz 2",
+      "questions": [
+        {
+          "id": "29",
+          "question": "Quel macronutriment est le plus calorique par gramme ?",
+          "options": [
+            "Lipides",
+            "Glucides",
+            "Protéines"
+          ],
+          "correctOption": 0
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "programId": "5",
+      "title": "Quiz 1",
+      "questions": [
+        {
+          "id": "33",
+          "question": "La pliométrie sert à développer ?",
+          "options": [
+            "La puissance",
+            "L'endurance",
+            "La souplesse"
+          ],
+          "correctOption": 0
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "programId": "5",
+      "title": "Quiz 2",
+      "questions": [
+        {
+          "id": "37",
+          "question": "Un bon échauffement permet de ?",
+          "options": [
+            "Réduire le risque de blessure",
+            "Augmenter la fatigue",
+            "Diminuer la fréquence cardiaque"
+          ],
+          "correctOption": 0
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "programId": "6",
+      "title": "Quiz 1",
+      "questions": [
+        {
+          "id": "41",
+          "question": "Les pompes sollicitent principalement ?",
+          "options": [
+            "Les pectoraux",
+            "Les mollets",
+            "Les ischio-jambiers"
+          ],
+          "correctOption": 0
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "programId": "6",
+      "title": "Quiz 2",
+      "questions": [
+        {
+          "id": "45",
+          "question": "Un entraînement au poids du corps est utile pour ?",
+          "options": [
+            "S'entraîner sans équipement",
+            "Remplacer l'échauffement",
+            "Éviter le cardio"
+          ],
+          "correctOption": 0
+        }
+      ]
+    }
   ],
   "seances": [
-    {"id":"1","programId":"1","title":"Séance 1","description":"Évaluation technique des mouvements de base.","dueDate":"2026-03-20","instructions":"Vidéo 2 minutes","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"file"},
-    {"id":"2","programId":"1","title":"Séance 2","description":"Programme de force - semaine 1.","dueDate":"2026-04-05","instructions":"Journal d'entraînement","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"text"},
-    {"id":"3","programId":"2","title":"Séance 1","description":"Circuit HIIT 20 minutes.","dueDate":"2026-03-25","instructions":"Rapport de fréquence cardiaque","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"file"},
-    {"id":"4","programId":"2","title":"Séance 2","description":"Intervalles sprint.","dueDate":"2026-04-10","instructions":"Temps chronométrés","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"text"},
-    {"id":"5","programId":"3","title":"Séance 1","description":"Enchaînement de postures de base.","dueDate":"2026-03-30","instructions":"Photo de posture","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"file"},
-    {"id":"6","programId":"3","title":"Séance 2","description":"Routine de respiration.","dueDate":"2026-04-12","instructions":"Journal de respiration","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"text"},
-    {"id":"7","programId":"4","title":"Séance 1","description":"Suivi alimentaire.","dueDate":"2026-03-22","instructions":"Journal alimentaire","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"file"},
-    {"id":"8","programId":"4","title":"Séance 2","description":"Bilan de poids hebdomadaire.","dueDate":"2026-04-07","instructions":"Tableau de suivi","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"text"},
-    {"id":"9","programId":"5","title":"Séance 1","description":"Test de puissance.","dueDate":"2026-03-24","instructions":"Rapport de performance","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"text"},
-    {"id":"10","programId":"5","title":"Séance 2","description":"Test d'agilité.","dueDate":"2026-04-09","instructions":"Vidéo de démonstration","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"file"},
-    {"id":"11","programId":"6","title":"Séance 1","description":"Circuit poids du corps.","dueDate":"2026-03-24","instructions":"Journal d'entraînement","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"text"},
-    {"id":"12","programId":"6","title":"Séance 2","description":"Défi 30 jours.","dueDate":"2026-04-12","instructions":"Suivi quotidien","status":"Non soumis","grade":null,"comment":null,"totalPoints":20,"type":"file"}
+    {
+      "id": "1",
+      "programId": "1",
+      "title": "Séance 1",
+      "description": "Évaluation technique des mouvements de base.",
+      "dueDate": "2026-03-20",
+      "instructions": "Vidéo 2 minutes",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "file"
+    },
+    {
+      "id": "2",
+      "programId": "1",
+      "title": "Séance 2",
+      "description": "Programme de force - semaine 1.",
+      "dueDate": "2026-04-05",
+      "instructions": "Journal d'entraînement",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "text"
+    },
+    {
+      "id": "3",
+      "programId": "2",
+      "title": "Séance 1",
+      "description": "Circuit HIIT 20 minutes.",
+      "dueDate": "2026-03-25",
+      "instructions": "Rapport de fréquence cardiaque",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "file"
+    },
+    {
+      "id": "4",
+      "programId": "2",
+      "title": "Séance 2",
+      "description": "Intervalles sprint.",
+      "dueDate": "2026-04-10",
+      "instructions": "Temps chronométrés",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "text"
+    },
+    {
+      "id": "5",
+      "programId": "3",
+      "title": "Séance 1",
+      "description": "Enchaînement de postures de base.",
+      "dueDate": "2026-03-30",
+      "instructions": "Photo de posture",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "file"
+    },
+    {
+      "id": "6",
+      "programId": "3",
+      "title": "Séance 2",
+      "description": "Routine de respiration.",
+      "dueDate": "2026-04-12",
+      "instructions": "Journal de respiration",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "text"
+    },
+    {
+      "id": "7",
+      "programId": "4",
+      "title": "Séance 1",
+      "description": "Suivi alimentaire.",
+      "dueDate": "2026-03-22",
+      "instructions": "Journal alimentaire",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "file"
+    },
+    {
+      "id": "8",
+      "programId": "4",
+      "title": "Séance 2",
+      "description": "Bilan de poids hebdomadaire.",
+      "dueDate": "2026-04-07",
+      "instructions": "Tableau de suivi",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "text"
+    },
+    {
+      "id": "9",
+      "programId": "5",
+      "title": "Séance 1",
+      "description": "Test de puissance.",
+      "dueDate": "2026-03-24",
+      "instructions": "Rapport de performance",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "text"
+    },
+    {
+      "id": "10",
+      "programId": "5",
+      "title": "Séance 2",
+      "description": "Test d'agilité.",
+      "dueDate": "2026-04-09",
+      "instructions": "Vidéo de démonstration",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "file"
+    },
+    {
+      "id": "11",
+      "programId": "6",
+      "title": "Séance 1",
+      "description": "Circuit poids du corps.",
+      "dueDate": "2026-03-24",
+      "instructions": "Journal d'entraînement",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "text"
+    },
+    {
+      "id": "12",
+      "programId": "6",
+      "title": "Séance 2",
+      "description": "Défi 30 jours.",
+      "dueDate": "2026-04-12",
+      "instructions": "Suivi quotidien",
+      "status": "Non soumis",
+      "grade": null,
+      "comment": null,
+      "totalPoints": 20,
+      "type": "file"
+    }
   ],
   "$schema": "./node_modules/json-server/schema.json"
 }

@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">FitZone</string>
+
+    <string name="connexion_titre">Connexion</string>
+    <string name="connexion_courriel">Courriel</string>
+    <string name="connexion_mot_de_passe">Mot de passe</string>
+    <string name="connexion_bouton">Se connecter</string>
+    <string name="connexion_lien_inscription">Première utilisation ? Créer un compte</string>
+    <string name="connexion_champs_vides">Veuillez remplir tous les champs</string>
+    <string name="connexion_identifiants_invalides">Courriel ou mot de passe incorrect</string>
+
+    <string name="inscription_titre">Créer un compte</string>
+    <string name="inscription_prenom">Prénom</string>
+    <string name="inscription_nom">Nom</string>
+    <string name="inscription_telephone">Téléphone</string>
+    <string name="inscription_photo">Photo de profil (URL)</string>
+    <string name="inscription_bouton">S\'inscrire</string>
+    <string name="inscription_courriel_invalide">Courriel invalide</string>
+    <string name="inscription_reussie">Compte créé, vous pouvez vous connecter</string>
+    <string name="inscription_echec">Impossible de créer le compte</string>
+
+    <string name="accueil_titre">Tableau de bord</string>
+    <string name="accueil_bienvenue">Bonjour %1$s</string>
+    <string name="accueil_resume">%1$d programmes inscrits • %2$d quiz disponibles</string>
+    <string name="accueil_statuts">%1$d soumises • %2$d validées • %3$d en retard • %4$d à faire</string>
+    <string name="accueil_mes_programmes">Mes programmes</string>
+    <string name="accueil_voir_programmes">Voir tous mes programmes</string>
+    <string name="accueil_seances">Séances à réaliser</string>
+    <string name="accueil_echeance">Échéance : %1$s</string>
+    <string name="accueil_annonces">Annonces récentes</string>
+    <string name="accueil_annonce">%1$s — %2$s</string>
+    <string name="accueil_aucune_annonce">Aucune annonce</string>
+    <string name="accueil_deconnexion">Se déconnecter</string>
+
+    <string name="programmes_titre">Mes programmes</string>
+    <string name="programmes_recherche">Rechercher par nom ou code</string>
+    <string name="programmes_filtre_tous">Tous</string>
+    <string name="programmes_filtre_actifs">Actifs</string>
+    <string name="programmes_filtre_termines">Terminés</string>
+    <string name="programmes_aucun">Aucun programme ne correspond</string>
+    <string name="programme_coach">Coach : %1$s</string>
+
+    <string name="details_a_faire">Écran à réaliser (partie B) — programme reçu :</string>
+
+    <string name="erreur_chargement">Erreur lors du chargement des données</string>
+</resources>
