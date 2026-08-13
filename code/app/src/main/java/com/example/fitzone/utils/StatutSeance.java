@@ -9,6 +9,7 @@ import java.util.Locale;
 public class StatutSeance {
 
     public static final String A_FAIRE = "À faire";
+    public static final String A_VENIR = "À venir";
     public static final String SOUMISE = "Soumise";
     public static final String EN_RETARD = "En retard";
     public static final String VALIDEE = "Validée";
@@ -17,6 +18,9 @@ public class StatutSeance {
         if (seance.getGrade() != null) {
             return VALIDEE;
         }
+        if (!estDisponible(seance)) {
+            return A_VENIR;
+        }
         if (SOUMISE.equals(statutLocal)) {
             return SOUMISE;
         }
@@ -24,6 +28,12 @@ public class StatutSeance {
             return EN_RETARD;
         }
         return A_FAIRE;
+    }
+
+    public static boolean estDisponible(Seance seance) {
+        String dateDisponibilite = seance.getAvailableDate();
+        return dateDisponibilite == null || dateDisponibilite.isEmpty()
+                || dateDisponibilite.compareTo(aujourdhui()) <= 0;
     }
 
     public static String aujourdhui() {

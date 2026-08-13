@@ -43,6 +43,23 @@
             android:exported="false" />
 
         <activity
+            android:name=".activites.SeancesActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activites.DetailSeanceActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activites.ListeQuizActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activites.QuizActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".activites.NutritionActivity"
             android:exported="false" />
 

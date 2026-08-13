@@ -56,6 +56,20 @@ public class EtatSeanceDao {
         return date;
     }
 
+    public String obtenirContenu(String userId, String seanceId) {
+        SQLiteDatabase db = base.getReadableDatabase();
+        Cursor curseur = db.query(BaseSQLite.TABLE_ETAT_SEANCE, new String[]{"contenu"},
+                "userId = ? AND seanceId = ?", new String[]{userId, seanceId}, null, null, null);
+
+        String contenu = null;
+        if (curseur.moveToFirst()) {
+            contenu = curseur.getString(0);
+        }
+        curseur.close();
+        db.close();
+        return contenu;
+    }
+
     public Map<String, String> obtenirStatuts(String userId) {
         SQLiteDatabase db = base.getReadableDatabase();
         Cursor curseur = db.query(BaseSQLite.TABLE_ETAT_SEANCE, new String[]{"seanceId", "statut"},

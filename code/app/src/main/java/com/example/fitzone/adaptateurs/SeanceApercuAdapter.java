@@ -6,10 +6,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fitzone.R;
 import com.example.fitzone.modeles.Seance;
+import com.example.fitzone.utils.StatutSeance;
 
 import java.util.List;
 import java.util.Map;
@@ -36,9 +38,25 @@ public class SeanceApercuAdapter extends RecyclerView.Adapter<SeanceApercuAdapte
     public void onBindViewHolder(@NonNull SeanceViewHolder holder, int position) {
         Seance seance = seances.get(position);
         holder.texteTitreSeance.setText(seance.getTitle());
-        holder.texteEcheance.setText(holder.itemView.getContext()
-                .getString(R.string.accueil_echeance, seance.getDueDate()));
-        holder.texteStatutSeance.setText(statuts.get(seance.getId()));
+        String statut = statuts.get(seance.getId());
+        if (StatutSeance.A_VENIR.equals(statut)) {
+            holder.texteEcheance.setText(holder.itemView.getContext()
+                    .getString(R.string.seance_disponibilite, seance.getAvailableDate()));
+        } else {
+            holder.texteEcheance.setText(holder.itemView.getContext()
+                    .getString(R.string.accueil_echeance, seance.getDueDate()));
+        }
+        holder.texteStatutSeance.setText(statut);
+        holder.texteStatutSeance.setTextColor(ContextCompat.getColor(
+                holder.itemView.getContext(), couleurStatut(statut)));
+    }
+
+    private int couleurStatut(String statut) {
+        if (StatutSeance.VALIDEE.equals(statut)) return R.color.statut_validee;
+        if (StatutSeance.SOUMISE.equals(statut)) return R.color.statut_soumise;
+        if (StatutSeance.EN_RETARD.equals(statut)) return R.color.statut_en_retard;
+        if (StatutSeance.A_VENIR.equals(statut)) return R.color.statut_a_venir;
+        return R.color.statut_a_faire;
     }
 
     @Override

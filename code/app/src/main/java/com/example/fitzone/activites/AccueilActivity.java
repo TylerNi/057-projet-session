@@ -3,6 +3,8 @@ package com.example.fitzone.activites;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ import com.example.fitzone.reseau.ApiCallback;
 import com.example.fitzone.reseau.ApiClient;
 import com.example.fitzone.utils.SessionManager;
 import com.example.fitzone.utils.StatutSeance;
+import com.example.fitzone.utils.NavigationHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -49,7 +52,6 @@ public class AccueilActivity extends AppCompatActivity {
     private RecyclerView listeSeances;
     private LinearLayout conteneurAnnonces;
     private Button boutonTousLesProgrammes;
-    private Button boutonDeconnexion;
 
     private SessionManager session;
     private EtatSeanceDao etatSeanceDao;
@@ -70,7 +72,6 @@ public class AccueilActivity extends AppCompatActivity {
         listeSeances = findViewById(R.id.listeSeances);
         conteneurAnnonces = findViewById(R.id.conteneurAnnonces);
         boutonTousLesProgrammes = findViewById(R.id.boutonTousLesProgrammes);
-        boutonDeconnexion = findViewById(R.id.boutonDeconnexion);
 
         session = new SessionManager(this);
         etatSeanceDao = new EtatSeanceDao(this);
@@ -84,21 +85,8 @@ public class AccueilActivity extends AppCompatActivity {
         boutonTousLesProgrammes.setOnClickListener(v ->
                 startActivity(new Intent(this, ListeProgrammesActivity.class)));
 
-        boutonDeconnexion.setOnClickListener(v -> deconnecter());
-
         BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setSelectedItemId(R.id.navAccueil);
-        navigation.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.navProgrammes) {
-                startActivity(new Intent(this, ListeProgrammesActivity.class));
-            } else if (id == R.id.navNutrition) {
-                startActivity(new Intent(this, NutritionActivity.class));
-            } else if (id == R.id.navProfil) {
-                startActivity(new Intent(this, ProfilActivity.class));
-            }
-            return true;
-        });
+        NavigationHelper.configurer(this, navigation, R.id.navAccueil);
 
         UtilisateurDao utilisateurDao = new UtilisateurDao(this);
         User cache = utilisateurDao.obtenir(session.obtenirUserId());
@@ -106,6 +94,13 @@ public class AccueilActivity extends AppCompatActivity {
             texteBienvenue.setText(getString(R.string.accueil_bienvenue, cache.getPrenom()));
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Les soumissions sont conservées dans SQLite. Recalculer au retour permet
+        // d'afficher immédiatement la nouvelle progression sans recréer l'activité.
         chargerUtilisateur();
     }
 
@@ -169,12 +164,30 @@ public class AccueilActivity extends AppCompatActivity {
 
     private void afficherAnnonces(List<Program> programmes) {
         conteneurAnnonces.removeAllViews();
+        int nombreAffiche = 0;
         for (Program programme : programmes) {
             for (String annonce : programme.getAnnonces()) {
-                TextView vue = new TextView(this);
-                vue.setText(getString(R.string.accueil_annonce, programme.getCode(), annonce));
-                vue.setPadding(8, 8, 8, 8);
-                conteneurAnnonces.addView(vue);
+                if (nombreAffiche >= MAX_APERCU) {
+                    break;
+                }
+
+                View carte = LayoutInflater.from(this)
+                        .inflate(R.layout.item_annonce, conteneurAnnonces, false);
+                TextView texteProgramme = carte.findViewById(R.id.texteProgrammeAnnonce);
+                TextView texteAnnonce = carte.findViewById(R.id.texteAnnonce);
+                texteProgramme.setText(getString(R.string.accueil_annonce_programme,
+                        programme.getCode(), programme.getTitle()));
+                texteAnnonce.setText(annonce);
+                carte.setOnClickListener(v -> {
+                    Intent intent = new Intent(this, DetailsProgrammeActivity.class);
+                    intent.putExtra(DetailsProgrammeActivity.EXTRA_PROGRAMME_ID, programme.getId());
+                    startActivity(intent);
+                });
+                conteneurAnnonces.addView(carte);
+                nombreAffiche++;
+            }
+            if (nombreAffiche >= MAX_APERCU) {
+                break;
             }
         }
 
@@ -182,6 +195,8 @@ public class AccueilActivity extends AppCompatActivity {
             TextView vue = new TextView(this);
             vue.setText(R.string.accueil_aucune_annonce);
             vue.setGravity(Gravity.CENTER);
+            vue.setTextColor(getColor(R.color.fitzone_text_secondary));
+            vue.setPadding(16, 24, 16, 24);
             conteneurAnnonces.addView(vue);
         }
     }
@@ -240,7 +255,9 @@ public class AccueilActivity extends AppCompatActivity {
         List<Seance> aVenir = new ArrayList<>();
         for (Seance seance : seances) {
             String statut = statuts.get(seance.getId());
-            if (StatutSeance.A_FAIRE.equals(statut) || StatutSeance.EN_RETARD.equals(statut)) {
+            if (StatutSeance.A_FAIRE.equals(statut)
+                    || StatutSeance.A_VENIR.equals(statut)
+                    || StatutSeance.EN_RETARD.equals(statut)) {
                 aVenir.add(seance);
             }
         }
@@ -283,14 +300,6 @@ public class AccueilActivity extends AppCompatActivity {
                 afficherMessage(message);
             }
         });
-    }
-
-    private void deconnecter() {
-        session.fermerSession();
-        Intent intent = new Intent(this, ConnexionActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
     }
 
     private void afficherMessage(String message) {

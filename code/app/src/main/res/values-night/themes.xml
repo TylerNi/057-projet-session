@@ -1,7 +1,19 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.FitZone" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<resources>
+    <style name="Base.Theme.FitZone" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/fitzone_primary</item>
+        <item name="colorOnPrimary">@color/fitzone_surface</item>
+        <item name="colorPrimaryContainer">@color/fitzone_primary_soft</item>
+        <item name="colorOnPrimaryContainer">@color/fitzone_primary_dark</item>
+        <item name="colorSecondary">@color/fitzone_secondary</item>
+        <item name="colorSurface">@color/fitzone_surface</item>
+        <item name="colorSurfaceContainer">@color/fitzone_surface_muted</item>
+        <item name="colorOutline">@color/fitzone_border</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:statusBarColor">@color/fitzone_surface</item>
+        <item name="android:navigationBarColor">@color/fitzone_surface</item>
+        <item name="android:navigationBarDividerColor">@color/fitzone_surface</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
+        <item name="android:windowBackground">@color/fitzone_surface</item>
     </style>
 </resources>

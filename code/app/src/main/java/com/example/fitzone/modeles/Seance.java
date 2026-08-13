@@ -9,6 +9,7 @@ public class Seance {
     private String programId;
     private String title;
     private String description;
+    private String availableDate;
     private String dueDate;
     private String instructions;
     private String status;
@@ -22,6 +23,7 @@ public class Seance {
         this.programId = json.optString("programId");
         this.title = json.optString("title");
         this.description = json.optString("description");
+        this.availableDate = json.optString("availableDate");
         this.dueDate = json.optString("dueDate");
         this.instructions = json.optString("instructions");
         this.status = json.optString("status");
@@ -49,6 +51,10 @@ public class Seance {
 
     public String getDueDate() {
         return dueDate;
+    }
+
+    public String getAvailableDate() {
+        return availableDate;
     }
 
     public String getInstructions() {

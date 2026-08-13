@@ -8,7 +8,7 @@
       "nom": "Benali",
       "prenom": "Karim",
       "telephone": "514-222-3344",
-      "photoUrl": "https://example.com/photo1.jpg",
+      "photoUrl": "https://picsum.photos/200/300",
       "enrolledProgramIds": [
         "1",
         "2",
@@ -24,7 +24,12 @@
           "total": 5
         }
       ],
-      "completedSeanceIds": []
+      "completedSeanceIds": [
+        "7",
+        "8",
+        "11",
+        "12"
+      ]
     },
     {
       "id": "2",
@@ -349,9 +354,10 @@
     {
       "id": "1",
       "programId": "1",
-      "title": "Séance 1",
+      "title": "Musculation - Débutant · Séance 1",
       "description": "Évaluation technique des mouvements de base.",
-      "dueDate": "2026-03-20",
+      "availableDate": "2026-08-10",
+      "dueDate": "2026-08-17",
       "instructions": "Vidéo 2 minutes",
       "status": "Non soumis",
       "grade": null,
@@ -362,9 +368,10 @@
     {
       "id": "2",
       "programId": "1",
-      "title": "Séance 2",
+      "title": "Musculation - Débutant · Séance 2",
       "description": "Programme de force - semaine 1.",
-      "dueDate": "2026-04-05",
+      "availableDate": "2026-08-24",
+      "dueDate": "2026-08-31",
       "instructions": "Journal d'entraînement",
       "status": "Non soumis",
       "grade": null,
@@ -375,9 +382,10 @@
     {
       "id": "3",
       "programId": "2",
-      "title": "Séance 1",
+      "title": "Cardio & HIIT · Séance 1",
       "description": "Circuit HIIT 20 minutes.",
-      "dueDate": "2026-03-25",
+      "availableDate": "2026-08-11",
+      "dueDate": "2026-08-18",
       "instructions": "Rapport de fréquence cardiaque",
       "status": "Non soumis",
       "grade": null,
@@ -388,9 +396,10 @@
     {
       "id": "4",
       "programId": "2",
-      "title": "Séance 2",
+      "title": "Cardio & HIIT · Séance 2",
       "description": "Intervalles sprint.",
-      "dueDate": "2026-04-10",
+      "availableDate": "2026-08-25",
+      "dueDate": "2026-09-01",
       "instructions": "Temps chronométrés",
       "status": "Non soumis",
       "grade": null,
@@ -401,9 +410,10 @@
     {
       "id": "5",
       "programId": "3",
-      "title": "Séance 1",
+      "title": "Yoga & Mobilité · Séance 1",
       "description": "Enchaînement de postures de base.",
-      "dueDate": "2026-03-30",
+      "availableDate": "2026-08-12",
+      "dueDate": "2026-08-19",
       "instructions": "Photo de posture",
       "status": "Non soumis",
       "grade": null,
@@ -414,9 +424,10 @@
     {
       "id": "6",
       "programId": "3",
-      "title": "Séance 2",
+      "title": "Yoga & Mobilité · Séance 2",
       "description": "Routine de respiration.",
-      "dueDate": "2026-04-12",
+      "availableDate": "2026-08-26",
+      "dueDate": "2026-09-02",
       "instructions": "Journal de respiration",
       "status": "Non soumis",
       "grade": null,
@@ -427,35 +438,38 @@
     {
       "id": "7",
       "programId": "4",
-      "title": "Séance 1",
+      "title": "Perte de poids - Programme intégré · Séance 1",
       "description": "Suivi alimentaire.",
+      "availableDate": "2026-03-15",
       "dueDate": "2026-03-22",
       "instructions": "Journal alimentaire",
       "status": "Non soumis",
-      "grade": null,
-      "comment": null,
+      "grade": 18,
+      "comment": "Excellent suivi et objectifs bien documentés.",
       "totalPoints": 20,
       "type": "file"
     },
     {
       "id": "8",
       "programId": "4",
-      "title": "Séance 2",
+      "title": "Perte de poids - Programme intégré · Séance 2",
       "description": "Bilan de poids hebdomadaire.",
+      "availableDate": "2026-03-30",
       "dueDate": "2026-04-07",
       "instructions": "Tableau de suivi",
       "status": "Non soumis",
-      "grade": null,
-      "comment": null,
+      "grade": 17,
+      "comment": "Bonne constance tout au long du programme.",
       "totalPoints": 20,
       "type": "text"
     },
     {
       "id": "9",
       "programId": "5",
-      "title": "Séance 1",
+      "title": "Préparation physique sportive · Séance 1",
       "description": "Test de puissance.",
-      "dueDate": "2026-03-24",
+      "availableDate": "2026-08-13",
+      "dueDate": "2026-08-20",
       "instructions": "Rapport de performance",
       "status": "Non soumis",
       "grade": null,
@@ -466,9 +480,10 @@
     {
       "id": "10",
       "programId": "5",
-      "title": "Séance 2",
+      "title": "Préparation physique sportive · Séance 2",
       "description": "Test d'agilité.",
-      "dueDate": "2026-04-09",
+      "availableDate": "2026-08-27",
+      "dueDate": "2026-09-03",
       "instructions": "Vidéo de démonstration",
       "status": "Non soumis",
       "grade": null,
@@ -479,28 +494,112 @@
     {
       "id": "11",
       "programId": "6",
-      "title": "Séance 1",
+      "title": "Entraînement à domicile · Séance 1",
       "description": "Circuit poids du corps.",
+      "availableDate": "2026-03-17",
       "dueDate": "2026-03-24",
       "instructions": "Journal d'entraînement",
       "status": "Non soumis",
-      "grade": null,
-      "comment": null,
+      "grade": 19,
+      "comment": "Très bonne maîtrise du circuit et des mouvements.",
       "totalPoints": 20,
       "type": "text"
     },
     {
       "id": "12",
       "programId": "6",
-      "title": "Séance 2",
+      "title": "Entraînement à domicile · Séance 2",
       "description": "Défi 30 jours.",
+      "availableDate": "2026-04-05",
       "dueDate": "2026-04-12",
       "instructions": "Suivi quotidien",
       "status": "Non soumis",
-      "grade": null,
-      "comment": null,
+      "grade": 16,
+      "comment": "Défi complété avec une bonne régularité.",
       "totalPoints": 20,
       "type": "file"
+    }
+  ],
+  "nutrition": [
+    {
+      "id": "1",
+      "image": "nutrition_gruau",
+      "nom": "Gruau",
+      "description": "Une source de glucides complexes et de fibres qui fournit une énergie durable.",
+      "calories": 150,
+      "moment": "Petit-déjeuner"
+    },
+    {
+      "id": "2",
+      "image": "nutrition_banane",
+      "nom": "Banane",
+      "description": "Facile à digérer, elle apporte rapidement des glucides et du potassium.",
+      "calories": 105,
+      "moment": "Avant l'entraînement"
+    },
+    {
+      "id": "3",
+      "image": "nutrition_amandes",
+      "nom": "Amandes",
+      "description": "Une collation rassasiante riche en bons gras, en protéines et en magnésium.",
+      "calories": 170,
+      "moment": "Collation"
+    },
+    {
+      "id": "4",
+      "image": "nutrition_oeufs",
+      "nom": "Œufs",
+      "description": "Des protéines complètes qui contribuent au maintien de la masse musculaire.",
+      "calories": 140,
+      "moment": "Petit-déjeuner"
+    },
+    {
+      "id": "5",
+      "image": "nutrition_poulet",
+      "nom": "Poulet grillé",
+      "description": "Une protéine maigre adaptée à la récupération après une séance exigeante.",
+      "calories": 220,
+      "moment": "Après l'entraînement"
+    },
+    {
+      "id": "6",
+      "image": "nutrition_yogourt",
+      "nom": "Yogourt grec",
+      "description": "Riche en protéines et en calcium, pratique pour une collation équilibrée.",
+      "calories": 120,
+      "moment": "Collation"
+    },
+    {
+      "id": "7",
+      "image": "nutrition_pomme",
+      "nom": "Pomme",
+      "description": "Un fruit hydratant et riche en fibres pour combler une petite faim.",
+      "calories": 95,
+      "moment": "Collation"
+    },
+    {
+      "id": "8",
+      "image": "nutrition_quinoa",
+      "nom": "Salade de quinoa",
+      "description": "Un repas complet combinant glucides, fibres et protéines végétales.",
+      "calories": 260,
+      "moment": "Dîner"
+    },
+    {
+      "id": "9",
+      "image": "nutrition_saumon",
+      "nom": "Saumon",
+      "description": "Une excellente source de protéines et d'acides gras oméga-3.",
+      "calories": 280,
+      "moment": "Souper"
+    },
+    {
+      "id": "10",
+      "image": "nutrition_avocat",
+      "nom": "Avocat",
+      "description": "Des gras insaturés et des fibres pour accompagner un repas nourrissant.",
+      "calories": 160,
+      "moment": "Déjeuner"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

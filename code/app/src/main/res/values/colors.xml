@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="fitzone_primary">#2F80ED</color>
+    <color name="fitzone_primary_dark">#1769D2</color>
+    <color name="fitzone_primary_soft">#EAF3FF</color>
+    <color name="fitzone_secondary">#4A90F2</color>
+
+    <color name="fitzone_background">#F7F8FA</color>
+    <color name="fitzone_surface">#FFFFFF</color>
+    <color name="fitzone_surface_muted">#F1F3F5</color>
+    <color name="fitzone_border">#E3E6EA</color>
+    <color name="fitzone_divider">#ECEFF2</color>
+
+    <color name="fitzone_text_primary">#171A1F</color>
+    <color name="fitzone_text_secondary">#6F7782</color>
+    <color name="fitzone_text_tertiary">#9AA1AA</color>
+    <color name="fitzone_nav_inactive">#939AA3</color>
+    <color name="fitzone_ripple">#1A2F80ED</color>
+
+    <color name="statut_a_faire">#2F80ED</color>
+    <color name="statut_a_venir">#7B8490</color>
+    <color name="statut_soumise">#7B61FF</color>
+    <color name="statut_en_retard">#E5484D</color>
+    <color name="statut_validee">#21A366</color>
 </resources>

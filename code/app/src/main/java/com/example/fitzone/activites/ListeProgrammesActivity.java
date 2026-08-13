@@ -20,6 +20,8 @@ import com.example.fitzone.modeles.User;
 import com.example.fitzone.reseau.ApiCallback;
 import com.example.fitzone.reseau.ApiClient;
 import com.example.fitzone.utils.SessionManager;
+import com.example.fitzone.utils.NavigationHelper;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.chip.ChipGroup;
 
 import org.json.JSONArray;
@@ -57,6 +59,9 @@ public class ListeProgrammesActivity extends AppCompatActivity {
         });
         listeProgrammes.setLayoutManager(new LinearLayoutManager(this));
         listeProgrammes.setAdapter(adapter);
+
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        NavigationHelper.configurer(this, navigation, R.id.navProgrammes);
 
         champRecherche.addTextChangedListener(new TextWatcher() {
             @Override

@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/navAccueil"
-        android:icon="@android:drawable/ic_menu_agenda"
+        android:icon="@drawable/ic_nav_home"
         android:title="@string/nav_accueil" />
 
     <item
         android:id="@+id/navProgrammes"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:icon="@drawable/ic_nav_programs"
         android:title="@string/nav_programmes" />
 
     <item
         android:id="@+id/navNutrition"
-        android:icon="@android:drawable/ic_menu_view"
+        android:icon="@drawable/ic_nav_nutrition"
         android:title="@string/nav_nutrition" />
 
     <item
         android:id="@+id/navProfil"
-        android:icon="@android:drawable/ic_menu_manage"
+        android:icon="@drawable/ic_nav_profile"
         android:title="@string/nav_profil" />
 
 </menu>
