@@ -182,13 +182,11 @@ public class ProfilActivity extends AppCompatActivity {
                     texteProgrammesTermines.setText(getString(
                             R.string.profil_stat_nombre, programmesTermines));
                 } catch (Exception ignored) {
-                    // Le profil reste utilisable même si les statistiques sont indisponibles.
                 }
             }
 
             @Override
             public void onError(String message) {
-                // Le profil reste utilisable même si les statistiques sont indisponibles.
             }
         });
     }
@@ -222,13 +220,11 @@ public class ProfilActivity extends AppCompatActivity {
                         texteNoteMoyenne.setText("—");
                     }
                 } catch (Exception ignored) {
-                    // Le profil reste utilisable même si les statistiques sont indisponibles.
                 }
             }
 
             @Override
             public void onError(String message) {
-                // Le profil reste utilisable même si les statistiques sont indisponibles.
             }
         });
     }
@@ -280,8 +276,6 @@ public class ProfilActivity extends AppCompatActivity {
         boutonEnregistrer.setEnabled(false);
         indicateurChargement.setVisibility(View.VISIBLE);
 
-        // Une lecture fraîche est obligatoire avant le PUT : le cache SQLite ne contient
-        // ni le mot de passe ni les inscriptions et ne doit jamais servir à construire le corps.
         ApiClient.get("/users/" + userId, new ApiCallback() {
             @Override
             public void onSuccess(String body) {

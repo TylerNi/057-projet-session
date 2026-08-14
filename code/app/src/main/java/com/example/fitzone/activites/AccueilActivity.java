@@ -99,8 +99,6 @@ public class AccueilActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Les soumissions sont conservées dans SQLite. Recalculer au retour permet
-        // d'afficher immédiatement la nouvelle progression sans recréer l'activité.
         chargerUtilisateur();
     }
 

@@ -51,7 +51,6 @@ public final class ImageLoader {
                     }
                 }
             } catch (Exception ignored) {
-                // Le visuel de remplacement demeure affiché si l'URL est invalide ou hors ligne.
             } finally {
                 if (connexion != null) {
                     connexion.disconnect();
