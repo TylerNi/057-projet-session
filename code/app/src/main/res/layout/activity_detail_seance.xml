@@ -114,13 +114,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/fitzone_primary_soft"
-                android:drawableStart="@drawable/ic_session"
                 android:drawablePadding="10dp"
                 android:padding="14dp"
-                android:textColor="@color/fitzone_primary_dark"
+                android:textColor="@color/fitzone_primary"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_session" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/conteneurSoumission"

@@ -48,15 +48,7 @@ public class SeanceApercuAdapter extends RecyclerView.Adapter<SeanceApercuAdapte
         }
         holder.texteStatutSeance.setText(statut);
         holder.texteStatutSeance.setTextColor(ContextCompat.getColor(
-                holder.itemView.getContext(), couleurStatut(statut)));
-    }
-
-    private int couleurStatut(String statut) {
-        if (StatutSeance.VALIDEE.equals(statut)) return R.color.statut_validee;
-        if (StatutSeance.SOUMISE.equals(statut)) return R.color.statut_soumise;
-        if (StatutSeance.EN_RETARD.equals(statut)) return R.color.statut_en_retard;
-        if (StatutSeance.A_VENIR.equals(statut)) return R.color.statut_a_venir;
-        return R.color.statut_a_faire;
+                holder.itemView.getContext(), StatutSeance.couleur(statut)));
     }
 
     @Override

@@ -64,7 +64,7 @@ public class ConnexionActivity extends AppCompatActivity {
         String motDePasse = champMotDePasse.getText().toString();
 
         if (courriel.isEmpty() || motDePasse.isEmpty()) {
-            afficherMessage(getString(R.string.connexion_champs_vides));
+            Toast.makeText(this, R.string.connexion_champs_vides, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -75,7 +75,8 @@ public class ConnexionActivity extends AppCompatActivity {
             chemin = "/users?email=" + URLEncoder.encode(courriel, "UTF-8");
         } catch (Exception e) {
             boutonConnexion.setEnabled(true);
-            afficherMessage(getString(R.string.connexion_identifiants_invalides));
+            Toast.makeText(this, R.string.connexion_identifiants_invalides,
+                    Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -89,7 +90,7 @@ public class ConnexionActivity extends AppCompatActivity {
             @Override
             public void onError(String message) {
                 boutonConnexion.setEnabled(true);
-                afficherMessage(message);
+                Toast.makeText(ConnexionActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -98,13 +99,15 @@ public class ConnexionActivity extends AppCompatActivity {
         try {
             JSONArray resultats = new JSONArray(body);
             if (resultats.length() == 0) {
-                afficherMessage(getString(R.string.connexion_identifiants_invalides));
+                Toast.makeText(this, R.string.connexion_identifiants_invalides,
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
 
             User user = new User(resultats.getJSONObject(0));
             if (!motDePasse.equals(user.getPassword())) {
-                afficherMessage(getString(R.string.connexion_identifiants_invalides));
+                Toast.makeText(this, R.string.connexion_identifiants_invalides,
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -114,11 +117,8 @@ public class ConnexionActivity extends AppCompatActivity {
             startActivity(new Intent(this, AccueilActivity.class));
             finish();
         } catch (Exception e) {
-            afficherMessage(getString(R.string.connexion_identifiants_invalides));
+            Toast.makeText(this, R.string.connexion_identifiants_invalides,
+                    Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void afficherMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

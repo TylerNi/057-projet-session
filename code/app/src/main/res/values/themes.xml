@@ -3,8 +3,8 @@
         <item name="colorPrimary">@color/fitzone_primary</item>
         <item name="colorOnPrimary">@color/fitzone_surface</item>
         <item name="colorPrimaryContainer">@color/fitzone_primary_soft</item>
-        <item name="colorOnPrimaryContainer">@color/fitzone_primary_dark</item>
-        <item name="colorSecondary">@color/fitzone_secondary</item>
+        <item name="colorOnPrimaryContainer">@color/fitzone_primary</item>
+        <item name="colorSecondary">@color/fitzone_primary</item>
         <item name="colorSurface">@color/fitzone_surface</item>
         <item name="colorSurfaceContainer">@color/fitzone_surface_muted</item>
         <item name="colorOutline">@color/fitzone_border</item>
@@ -14,25 +14,13 @@
         <item name="android:textColorPrimary">@color/fitzone_text_primary</item>
         <item name="android:textColorSecondary">@color/fitzone_text_secondary</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowLightNavigationBar">true</item>
         <item name="android:statusBarColor">@color/fitzone_surface</item>
         <item name="android:navigationBarColor">@color/fitzone_surface</item>
-        <item name="android:navigationBarDividerColor">@color/fitzone_surface</item>
-        <item name="android:enforceNavigationBarContrast">false</item>
         <item name="android:windowActionModeOverlay">true</item>
         <item name="android:windowBackground">@color/fitzone_surface</item>
     </style>
 
     <style name="Theme.FitZone" parent="Base.Theme.FitZone" />
-
-    <style name="FitZone.ScreenTitle" parent="">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/fitzone_text_primary</item>
-        <item name="android:textSize">26sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans</item>
-    </style>
 
     <style name="FitZone.SectionTitle" parent="">
         <item name="android:layout_width">wrap_content</item>
@@ -93,18 +81,6 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/fitzone_text_primary</item>
     </style>
-
-    <style name="FitZone.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
-        <item name="android:background">@color/fitzone_surface</item>
-        <item name="android:elevation">8dp</item>
-        <item name="itemIconTint">@color/bottom_nav_item_tint</item>
-        <item name="itemTextColor">@color/bottom_nav_item_tint</item>
-        <item name="itemIconSize">23dp</item>
-        <item name="itemRippleColor">@color/fitzone_ripple</item>
-        <item name="labelVisibilityMode">labeled</item>
-    </style>
-
-    <style name="FitZone.Shape.Pill" parent="ShapeAppearance.Material3.Corner.Full" />
 
     <style name="FitZone.Shape.RoundedImage" parent="ShapeAppearance.Material3.Corner.Medium">
         <item name="cornerFamily">rounded</item>

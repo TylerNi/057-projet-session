@@ -54,12 +54,13 @@ public class InscriptionActivity extends AppCompatActivity {
 
         if (prenom.isEmpty() || nom.isEmpty() || courriel.isEmpty()
                 || motDePasse.isEmpty() || telephone.isEmpty()) {
-            afficherMessage(getString(R.string.connexion_champs_vides));
+            Toast.makeText(this, R.string.connexion_champs_vides, Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (!courriel.contains("@")) {
-            afficherMessage(getString(R.string.inscription_courriel_invalide));
+            Toast.makeText(this, R.string.inscription_courriel_invalide,
+                    Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -79,23 +80,20 @@ public class InscriptionActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(String body) {
                     boutonInscription.setEnabled(true);
-                    afficherMessage(getString(R.string.inscription_reussie));
+                    Toast.makeText(InscriptionActivity.this, R.string.inscription_reussie,
+                            Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
                 @Override
                 public void onError(String message) {
                     boutonInscription.setEnabled(true);
-                    afficherMessage(message);
+                    Toast.makeText(InscriptionActivity.this, message, Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (Exception e) {
             boutonInscription.setEnabled(true);
-            afficherMessage(getString(R.string.inscription_echec));
+            Toast.makeText(this, R.string.inscription_echec, Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void afficherMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

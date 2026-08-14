@@ -81,13 +81,16 @@ public class QuizActivity extends AppCompatActivity {
                     quiz = new Quiz(new JSONObject(body));
                     afficherQuiz();
                 } catch (Exception e) {
-                    afficherErreur(getString(R.string.quiz_introuvable));
+                    indicateurChargement.setVisibility(View.GONE);
+                    Toast.makeText(QuizActivity.this, R.string.quiz_introuvable,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherErreur(message);
+                indicateurChargement.setVisibility(View.GONE);
+                Toast.makeText(QuizActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -177,8 +180,4 @@ public class QuizActivity extends AppCompatActivity {
         return Math.round(valeur * getResources().getDisplayMetrics().density);
     }
 
-    private void afficherErreur(String message) {
-        indicateurChargement.setVisibility(View.GONE);
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 }

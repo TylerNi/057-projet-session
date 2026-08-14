@@ -1,5 +1,6 @@
 package com.example.fitzone.utils;
 
+import com.example.fitzone.R;
 import com.example.fitzone.modeles.Seance;
 
 import java.text.SimpleDateFormat;
@@ -34,6 +35,22 @@ public class StatutSeance {
         String dateDisponibilite = seance.getAvailableDate();
         return dateDisponibilite == null || dateDisponibilite.isEmpty()
                 || dateDisponibilite.compareTo(aujourdhui()) <= 0;
+    }
+
+    public static int couleur(String statut) {
+        if (VALIDEE.equals(statut)) {
+            return R.color.statut_validee;
+        }
+        if (SOUMISE.equals(statut)) {
+            return R.color.statut_soumise;
+        }
+        if (EN_RETARD.equals(statut)) {
+            return R.color.statut_en_retard;
+        }
+        if (A_VENIR.equals(statut)) {
+            return R.color.fitzone_text_secondary;
+        }
+        return R.color.fitzone_primary;
     }
 
     public static String aujourdhui() {

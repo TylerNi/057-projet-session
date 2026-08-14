@@ -83,13 +83,17 @@ public class ListeQuizActivity extends AppCompatActivity {
                     }
                     afficherQuiz(quiz);
                 } catch (Exception e) {
-                    afficherErreur(getString(R.string.erreur_chargement));
+                    indicateurChargement.setVisibility(View.GONE);
+                    Toast.makeText(ListeQuizActivity.this, R.string.erreur_chargement,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherErreur(message);
+                indicateurChargement.setVisibility(View.GONE);
+                Toast.makeText(ListeQuizActivity.this, message,
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -110,8 +114,4 @@ public class ListeQuizActivity extends AppCompatActivity {
         }));
     }
 
-    private void afficherErreur(String message) {
-        indicateurChargement.setVisibility(View.GONE);
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 }

@@ -130,7 +130,7 @@ public class DetailsProgrammeActivity extends AppCompatActivity {
             ajouterAnnonce(getString(R.string.details_aucune_annonce));
         } else {
             for (String annonce : programme.getAnnonces()) {
-                ajouterAnnonce("• " + annonce);
+                ajouterAnnonce("- " + annonce);
             }
         }
     }

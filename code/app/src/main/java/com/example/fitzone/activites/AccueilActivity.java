@@ -112,13 +112,14 @@ public class AccueilActivity extends AppCompatActivity {
                     texteBienvenue.setText(getString(R.string.accueil_bienvenue, user.getPrenom()));
                     chargerProgrammes();
                 } catch (Exception e) {
-                    afficherMessage(getString(R.string.erreur_chargement));
+                    Toast.makeText(AccueilActivity.this, R.string.erreur_chargement,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherMessage(message);
+                Toast.makeText(AccueilActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -140,13 +141,14 @@ public class AccueilActivity extends AppCompatActivity {
                     afficherAnnonces(programmes);
                     chargerSeances(programmes.size());
                 } catch (Exception e) {
-                    afficherMessage(getString(R.string.erreur_chargement));
+                    Toast.makeText(AccueilActivity.this, R.string.erreur_chargement,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherMessage(message);
+                Toast.makeText(AccueilActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -214,13 +216,14 @@ public class AccueilActivity extends AppCompatActivity {
                     }
                     afficherSeances(seances, nombreProgrammes);
                 } catch (Exception e) {
-                    afficherMessage(getString(R.string.erreur_chargement));
+                    Toast.makeText(AccueilActivity.this, R.string.erreur_chargement,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherMessage(message);
+                Toast.makeText(AccueilActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -289,18 +292,15 @@ public class AccueilActivity extends AppCompatActivity {
 
                     texteResume.setText(getString(R.string.accueil_resume, nombreProgrammes, disponibles));
                 } catch (Exception e) {
-                    afficherMessage(getString(R.string.erreur_chargement));
+                    Toast.makeText(AccueilActivity.this, R.string.erreur_chargement,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherMessage(message);
+                Toast.makeText(AccueilActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private void afficherMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

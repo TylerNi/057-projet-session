@@ -94,13 +94,15 @@ public class ListeProgrammesActivity extends AppCompatActivity {
                     User user = new User(new JSONObject(body));
                     chargerProgrammes(user.getEnrolledProgramIds());
                 } catch (Exception e) {
-                    afficherMessage(getString(R.string.erreur_chargement));
+                    Toast.makeText(ListeProgrammesActivity.this, R.string.erreur_chargement,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherMessage(message);
+                Toast.makeText(ListeProgrammesActivity.this, message,
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -120,13 +122,15 @@ public class ListeProgrammesActivity extends AppCompatActivity {
                     }
                     appliquerFiltres();
                 } catch (Exception e) {
-                    afficherMessage(getString(R.string.erreur_chargement));
+                    Toast.makeText(ListeProgrammesActivity.this, R.string.erreur_chargement,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherMessage(message);
+                Toast.makeText(ListeProgrammesActivity.this, message,
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -154,7 +158,4 @@ public class ListeProgrammesActivity extends AppCompatActivity {
         texteVide.setVisibility(filtres.isEmpty() ? View.VISIBLE : View.GONE);
     }
 
-    private void afficherMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 }

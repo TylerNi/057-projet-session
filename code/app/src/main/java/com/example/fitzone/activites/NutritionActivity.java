@@ -60,19 +60,19 @@ public class NutritionActivity extends AppCompatActivity {
                     texteVide.setVisibility(aliments.isEmpty() ? View.VISIBLE : View.GONE);
                     listeNutrition.setAdapter(new AlimentAdapter(aliments));
                 } catch (Exception e) {
-                    afficherErreur(getString(R.string.erreur_chargement));
+                    indicateurChargement.setVisibility(View.GONE);
+                    Toast.makeText(NutritionActivity.this, R.string.erreur_chargement,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherErreur(message);
+                indicateurChargement.setVisibility(View.GONE);
+                Toast.makeText(NutritionActivity.this, message,
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void afficherErreur(String message) {
-        indicateurChargement.setVisibility(View.GONE);
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 }

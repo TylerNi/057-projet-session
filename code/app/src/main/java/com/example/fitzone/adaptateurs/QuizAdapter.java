@@ -52,7 +52,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         if (resultat == null) {
             holder.texteStatut.setText(R.string.quiz_non_commence);
             holder.texteStatut.setTextColor(ContextCompat.getColor(
-                    holder.itemView.getContext(), R.color.statut_a_faire));
+                    holder.itemView.getContext(), R.color.fitzone_primary));
             holder.texteScore.setVisibility(View.GONE);
         } else {
             holder.texteStatut.setText(R.string.quiz_termine);

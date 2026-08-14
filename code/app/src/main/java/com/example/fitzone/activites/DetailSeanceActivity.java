@@ -95,13 +95,17 @@ public class DetailSeanceActivity extends AppCompatActivity {
                     seance = new Seance(new JSONObject(body));
                     afficherSeance();
                 } catch (Exception e) {
-                    afficherErreur(getString(R.string.seance_introuvable));
+                    indicateurChargement.setVisibility(View.GONE);
+                    Toast.makeText(DetailSeanceActivity.this, R.string.seance_introuvable,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherErreur(message);
+                indicateurChargement.setVisibility(View.GONE);
+                Toast.makeText(DetailSeanceActivity.this, message,
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -130,7 +134,7 @@ public class DetailSeanceActivity extends AppCompatActivity {
         String statutLocal = etatSeanceDao.obtenirStatut(userId, seanceId);
         String statut = StatutSeance.calculer(seance, statutLocal);
         texteStatut.setText(statut);
-        texteStatut.setTextColor(ContextCompat.getColor(this, couleurStatut(statut)));
+        texteStatut.setTextColor(ContextCompat.getColor(this, StatutSeance.couleur(statut)));
 
         String dateSoumission = etatSeanceDao.obtenirDateSoumission(userId, seanceId);
         if (dateSoumission == null || dateSoumission.isEmpty()) {
@@ -181,24 +185,4 @@ public class DetailSeanceActivity extends AppCompatActivity {
         afficherSeance();
     }
 
-    private int couleurStatut(String statut) {
-        if (StatutSeance.VALIDEE.equals(statut)) {
-            return R.color.statut_validee;
-        }
-        if (StatutSeance.SOUMISE.equals(statut)) {
-            return R.color.statut_soumise;
-        }
-        if (StatutSeance.EN_RETARD.equals(statut)) {
-            return R.color.statut_en_retard;
-        }
-        if (StatutSeance.A_VENIR.equals(statut)) {
-            return R.color.statut_a_venir;
-        }
-        return R.color.statut_a_faire;
-    }
-
-    private void afficherErreur(String message) {
-        indicateurChargement.setVisibility(View.GONE);
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 }

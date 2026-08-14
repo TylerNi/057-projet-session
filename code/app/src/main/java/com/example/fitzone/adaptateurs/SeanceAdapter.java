@@ -55,7 +55,7 @@ public class SeanceAdapter extends RecyclerView.Adapter<SeanceAdapter.SeanceView
         holder.texteStatut.setText(statut);
         holder.texteStatut.setBackgroundResource(R.drawable.bg_status_pill);
         holder.texteStatut.setTextColor(ContextCompat.getColor(
-                holder.itemView.getContext(), couleurStatut(statut)));
+                holder.itemView.getContext(), StatutSeance.couleur(statut)));
 
         if (seance.getGrade() == null) {
             holder.texteNote.setText(R.string.seance_note_aucune);
@@ -65,22 +65,6 @@ public class SeanceAdapter extends RecyclerView.Adapter<SeanceAdapter.SeanceView
         }
 
         holder.itemView.setOnClickListener(v -> surClic.ouvrir(seance));
-    }
-
-    private int couleurStatut(String statut) {
-        if (StatutSeance.VALIDEE.equals(statut)) {
-            return R.color.statut_validee;
-        }
-        if (StatutSeance.SOUMISE.equals(statut)) {
-            return R.color.statut_soumise;
-        }
-        if (StatutSeance.EN_RETARD.equals(statut)) {
-            return R.color.statut_en_retard;
-        }
-        if (StatutSeance.A_VENIR.equals(statut)) {
-            return R.color.statut_a_venir;
-        }
-        return R.color.statut_a_faire;
     }
 
     @Override

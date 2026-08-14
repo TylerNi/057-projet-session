@@ -1,14 +1,9 @@
 package com.example.fitzone.utils;
 
-import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.os.Build;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.DefaultLifecycleObserver;
-import androidx.lifecycle.LifecycleOwner;
 
 import com.example.fitzone.R;
 import com.example.fitzone.activites.AccueilActivity;
@@ -25,16 +20,9 @@ public final class NavigationHelper {
     public static void configurer(AppCompatActivity activite,
                                   BottomNavigationView navigation,
                                   int destinationActuelle) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            activite.overrideActivityTransition(Activity.OVERRIDE_TRANSITION_OPEN, 0, 0);
-            activite.overrideActivityTransition(Activity.OVERRIDE_TRANSITION_CLOSE, 0, 0);
-        }
-
         navigation.getMenu().findItem(destinationActuelle).setChecked(true);
         navigation.setItemHorizontalTranslationEnabled(false);
         navigation.setItemActiveIndicatorEnabled(false);
-        navigation.setOnItemReselectedListener(item -> {
-        });
         navigation.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == destinationActuelle) {
@@ -54,22 +42,14 @@ public final class NavigationHelper {
 
             if (destination != null) {
                 Intent intent = new Intent(activite, destination);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
-                        | Intent.FLAG_ACTIVITY_SINGLE_TOP
-                        | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 activite.startActivity(intent,
                         ActivityOptions.makeCustomAnimation(activite, 0, 0).toBundle());
+                navigation.post(() -> navigation.getMenu()
+                        .findItem(destinationActuelle).setChecked(true));
                 return true;
             }
             return false;
         });
-
-        activite.getLifecycle().addObserver(new DefaultLifecycleObserver() {
-            @Override
-            public void onResume(@NonNull LifecycleOwner owner) {
-                navigation.getMenu().findItem(destinationActuelle).setChecked(true);
-            }
-        });
-
     }
 }

@@ -26,6 +26,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -69,12 +70,12 @@ public class ProfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profil);
 
         sessionManager = new SessionManager(this);
-        userId = sessionManager.obtenirUserId();
-        if (userId == null) {
+        if (!sessionManager.estConnecte()) {
             Toast.makeText(this, R.string.profil_session_invalide, Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
+        userId = sessionManager.obtenirUserId();
 
         indicateurChargement = findViewById(R.id.indicateurChargement);
         imageProfil = findViewById(R.id.imageProfil);
@@ -139,13 +140,16 @@ public class ProfilActivity extends AppCompatActivity {
                     indicateurChargement.setVisibility(View.GONE);
                     boutonModifier.setEnabled(true);
                 } catch (Exception e) {
-                    afficherErreur(getString(R.string.erreur_chargement));
+                    indicateurChargement.setVisibility(View.GONE);
+                    Toast.makeText(ProfilActivity.this, R.string.erreur_chargement,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherErreur(message);
+                indicateurChargement.setVisibility(View.GONE);
+                Toast.makeText(ProfilActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -157,7 +161,8 @@ public class ProfilActivity extends AppCompatActivity {
         champCourriel.setText(user.getEmail());
         champTelephone.setText(user.getTelephone());
         champPhoto.setText(user.getPhotoUrl());
-        texteNomComplet.setText((user.getPrenom() + " " + user.getNom()).trim());
+        texteNomComplet.setText(getString(
+                R.string.profil_nom_complet, user.getPrenom(), user.getNom()).trim());
         texteCourrielResume.setText(user.getEmail());
         texteTelephoneResume.setText(user.getTelephone());
         ImageLoader.charger(user.getPhotoUrl(), imageProfil);
@@ -165,6 +170,8 @@ public class ProfilActivity extends AppCompatActivity {
 
     private void chargerStatistiques(User user) {
         List<String> idsProgrammes = new ArrayList<>(user.getEnrolledProgramIds());
+        texteSeancesReussies.setText(getString(
+                R.string.profil_stat_nombre, user.getCompletedSeanceIds().size()));
         chargerStatistiquesSeances(idsProgrammes);
         ApiClient.get("/programs", new ApiCallback() {
             @Override
@@ -181,12 +188,14 @@ public class ProfilActivity extends AppCompatActivity {
                     }
                     texteProgrammesTermines.setText(getString(
                             R.string.profil_stat_nombre, programmesTermines));
-                } catch (Exception ignored) {
+                } catch (JSONException e) {
+                    texteProgrammesTermines.setText(R.string.profil_stat_indisponible);
                 }
             }
 
             @Override
             public void onError(String message) {
+                texteProgrammesTermines.setText(R.string.profil_stat_indisponible);
             }
         });
     }
@@ -217,14 +226,18 @@ public class ProfilActivity extends AppCompatActivity {
                         texteNoteMoyenne.setText(getString(
                                 R.string.profil_stat_pourcentage, moyenne));
                     } else {
-                        texteNoteMoyenne.setText("—");
+                        texteNoteMoyenne.setText(R.string.profil_stat_indisponible);
                     }
-                } catch (Exception ignored) {
+                } catch (JSONException e) {
+                    texteSeancesReussies.setText(R.string.profil_stat_indisponible);
+                    texteNoteMoyenne.setText(R.string.profil_stat_indisponible);
                 }
             }
 
             @Override
             public void onError(String message) {
+                texteSeancesReussies.setText(R.string.profil_stat_indisponible);
+                texteNoteMoyenne.setText(R.string.profil_stat_indisponible);
             }
         });
     }
@@ -240,6 +253,7 @@ public class ProfilActivity extends AppCompatActivity {
     }
 
     private void deconnecter() {
+        utilisateurDao.supprimer(userId);
         sessionManager.fermerSession();
         Intent intent = new Intent(this, ConnexionActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -341,11 +355,6 @@ public class ProfilActivity extends AppCompatActivity {
 
     private String texte(TextInputEditText champ) {
         return champ.getText() == null ? "" : champ.getText().toString().trim();
-    }
-
-    private void afficherErreur(String message) {
-        indicateurChargement.setVisibility(View.GONE);
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     private void terminerEnErreur(String message) {

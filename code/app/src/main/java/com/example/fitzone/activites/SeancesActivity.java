@@ -60,7 +60,7 @@ public class SeancesActivity extends AppCompatActivity {
 
         etatSeanceDao = new EtatSeanceDao(this);
         sessionManager = new SessionManager(this);
-        if (sessionManager.obtenirUserId() == null) {
+        if (!sessionManager.estConnecte()) {
             finish();
             return;
         }
@@ -88,13 +88,17 @@ public class SeancesActivity extends AppCompatActivity {
                     }
                     afficherSeances(seances);
                 } catch (Exception e) {
-                    afficherErreur(getString(R.string.erreur_chargement));
+                    indicateurChargement.setVisibility(View.GONE);
+                    Toast.makeText(SeancesActivity.this, R.string.erreur_chargement,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onError(String message) {
-                afficherErreur(message);
+                indicateurChargement.setVisibility(View.GONE);
+                Toast.makeText(SeancesActivity.this, message,
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -118,8 +122,4 @@ public class SeancesActivity extends AppCompatActivity {
         }));
     }
 
-    private void afficherErreur(String message) {
-        indicateurChargement.setVisibility(View.GONE);
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
 }

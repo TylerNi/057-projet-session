@@ -393,7 +393,7 @@
     {
       "id": "1",
       "programId": "1",
-      "title": "Musculation - Débutant · Séance 1",
+      "title": "Musculation - Débutant - Séance 1",
       "description": "Évaluation technique des mouvements de base.",
       "availableDate": "2026-08-10",
       "dueDate": "2026-08-17",
@@ -407,7 +407,7 @@
     {
       "id": "2",
       "programId": "1",
-      "title": "Musculation - Débutant · Séance 2",
+      "title": "Musculation - Débutant - Séance 2",
       "description": "Programme de force - semaine 1.",
       "availableDate": "2026-08-24",
       "dueDate": "2026-08-31",
@@ -421,7 +421,7 @@
     {
       "id": "3",
       "programId": "2",
-      "title": "Cardio & HIIT · Séance 1",
+      "title": "Cardio & HIIT - Séance 1",
       "description": "Circuit HIIT 20 minutes.",
       "availableDate": "2026-08-11",
       "dueDate": "2026-08-18",
@@ -435,7 +435,7 @@
     {
       "id": "4",
       "programId": "2",
-      "title": "Cardio & HIIT · Séance 2",
+      "title": "Cardio & HIIT - Séance 2",
       "description": "Intervalles sprint.",
       "availableDate": "2026-08-25",
       "dueDate": "2026-09-01",
@@ -449,7 +449,7 @@
     {
       "id": "5",
       "programId": "3",
-      "title": "Yoga & Mobilité · Séance 1",
+      "title": "Yoga & Mobilité - Séance 1",
       "description": "Enchaînement de postures de base.",
       "availableDate": "2026-08-12",
       "dueDate": "2026-08-19",
@@ -463,7 +463,7 @@
     {
       "id": "6",
       "programId": "3",
-      "title": "Yoga & Mobilité · Séance 2",
+      "title": "Yoga & Mobilité - Séance 2",
       "description": "Routine de respiration.",
       "availableDate": "2026-08-26",
       "dueDate": "2026-09-02",
@@ -477,7 +477,7 @@
     {
       "id": "7",
       "programId": "4",
-      "title": "Perte de poids - Programme intégré · Séance 1",
+      "title": "Perte de poids - Programme intégré - Séance 1",
       "description": "Suivi alimentaire.",
       "availableDate": "2026-03-15",
       "dueDate": "2026-03-22",
@@ -491,7 +491,7 @@
     {
       "id": "8",
       "programId": "4",
-      "title": "Perte de poids - Programme intégré · Séance 2",
+      "title": "Perte de poids - Programme intégré - Séance 2",
       "description": "Bilan de poids hebdomadaire.",
       "availableDate": "2026-03-30",
       "dueDate": "2026-04-07",
@@ -505,7 +505,7 @@
     {
       "id": "9",
       "programId": "5",
-      "title": "Préparation physique sportive · Séance 1",
+      "title": "Préparation physique sportive - Séance 1",
       "description": "Test de puissance.",
       "availableDate": "2026-08-13",
       "dueDate": "2026-08-20",
@@ -519,7 +519,7 @@
     {
       "id": "10",
       "programId": "5",
-      "title": "Préparation physique sportive · Séance 2",
+      "title": "Préparation physique sportive - Séance 2",
       "description": "Test d'agilité.",
       "availableDate": "2026-08-27",
       "dueDate": "2026-09-03",
@@ -533,7 +533,7 @@
     {
       "id": "11",
       "programId": "6",
-      "title": "Entraînement à domicile · Séance 1",
+      "title": "Entraînement à domicile - Séance 1",
       "description": "Circuit poids du corps.",
       "availableDate": "2026-03-17",
       "dueDate": "2026-03-24",
@@ -547,7 +547,7 @@
     {
       "id": "12",
       "programId": "6",
-      "title": "Entraînement à domicile · Séance 2",
+      "title": "Entraînement à domicile - Séance 2",
       "description": "Défi 30 jours.",
       "availableDate": "2026-04-05",
       "dueDate": "2026-04-12",

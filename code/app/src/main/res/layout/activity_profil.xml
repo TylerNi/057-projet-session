@@ -128,7 +128,7 @@
                                 android:id="@+id/texteSeancesReussiesProfil"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="—"
+                                android:text="@string/profil_stat_indisponible"
                                 android:textColor="@color/fitzone_primary"
                                 android:textSize="22sp"
                                 android:textStyle="bold" />
@@ -161,7 +161,7 @@
                                 android:id="@+id/texteProgrammesTerminesProfil"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="—"
+                                android:text="@string/profil_stat_indisponible"
                                 android:textColor="@color/fitzone_primary"
                                 android:textSize="22sp"
                                 android:textStyle="bold" />
@@ -194,7 +194,7 @@
                                 android:id="@+id/texteNoteMoyenneProfil"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="—"
+                                android:text="@string/profil_stat_indisponible"
                                 android:textColor="@color/fitzone_primary"
                                 android:textSize="22sp"
                                 android:textStyle="bold" />
